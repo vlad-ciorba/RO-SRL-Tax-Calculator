@@ -10,10 +10,21 @@ namespace SRL_Calculator
             InitializeComponent();
         }
 
-        private void onlyAllowNumbers(object sender, KeyEventArgs e)
+        public float eurValue { get; set; }
+
+        private void frmRoSrlSalaryTaxCalculator_Load(object sender, EventArgs e)
         {
-            if (e.KeyData != Keys.Back)
+            eurValue = float.Parse(txtEurValue.Text);
+        }
+
+        private void OnlyAllowNumbers(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Back &&
+                e.KeyData != Keys.Delete &&
+                e.KeyData != Keys.OemPeriod)
+            {
                 e.SuppressKeyPress = !int.TryParse(Convert.ToString((char)e.KeyData), out int _);
+            }
         }
 
         private void ResetGrossAmounts()
@@ -47,12 +58,10 @@ namespace SRL_Calculator
         {
             if (!string.IsNullOrEmpty(txtAccountantMonthly.Text))
             {
-                txtAccountantAnnually.Text = (float.Parse(txtAccountantMonthly.Text) * 12).ToString();
                 UpdateAmounts();
             }
             else
             {
-                txtAccountantAnnually.Text = "";
                 ResetOutputAmounts();
             }
         }
@@ -61,6 +70,25 @@ namespace SRL_Calculator
         {
             if (!string.IsNullOrEmpty(txtAnafAnnually.Text))
             {
+                UpdateAmounts();
+            }
+            else
+            {
+                ResetOutputAmounts();
+            }
+        }
+
+        private void txtEurValue_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEurValue.Text))
+            {
+                eurValue = float.Parse(txtEurValue.Text);
+
+                if (!string.IsNullOrEmpty(txtGrossMonthly.Text))
+                {
+                    txtGrossMonthlyEur.Text = (float.Parse(txtGrossMonthly.Text) / eurValue).ToString();
+                    txtGrossAnnuallyEur.Text = (float.Parse(txtGrossAnnually.Text) / eurValue).ToString();
+                }
                 UpdateAmounts();
             }
             else
@@ -80,10 +108,10 @@ namespace SRL_Calculator
                     return;
                 }
 
-                txtGrossMonthlyEur.Text = (float.Parse(txtGrossMonthly.Text) / 5).ToString();
+                txtGrossMonthlyEur.Text = (float.Parse(txtGrossMonthly.Text) / eurValue).ToString();
 
                 txtGrossAnnually.Text = (float.Parse(txtGrossMonthly.Text) * 12).ToString();
-                txtGrossAnnuallyEur.Text = (float.Parse(txtGrossAnnually.Text) / 5).ToString();
+                txtGrossAnnuallyEur.Text = (float.Parse(txtGrossAnnually.Text) / eurValue).ToString();
             }
             else
             {
@@ -146,8 +174,8 @@ namespace SRL_Calculator
                 // set net ammounts
                 txtNetMonth.Text = txtAnafMonth.Text;
                 txtNetYear.Text = txtAnafYear.Text;
-                txtNetMonthEur.Text = (float.Parse(txtNetMonth.Text) / 5).ToString();
-                txtNetYearEur.Text = (float.Parse(txtNetYear.Text) / 5).ToString();
+                txtNetMonthEur.Text = (float.Parse(txtNetMonth.Text) / eurValue).ToString();
+                txtNetYearEur.Text = (float.Parse(txtNetYear.Text) / eurValue).ToString();
 
                 // set percentage
                 lblPercentage.Text = String.Format("{0:0.00}", float.Parse(txtNetMonth.Text) * 100 / float.Parse(txtGrossMonthly.Text)) + "%";

@@ -33,8 +33,6 @@ namespace SRL_Calculator
             this.lblGrossMonthly = new System.Windows.Forms.Label();
             this.lblAccountantMonthly = new System.Windows.Forms.Label();
             this.txtAccountantMonthly = new System.Windows.Forms.TextBox();
-            this.lblAccountantAnnually = new System.Windows.Forms.Label();
-            this.txtAccountantAnnually = new System.Windows.Forms.TextBox();
             this.lblGrossAnnually = new System.Windows.Forms.Label();
             this.txtGrossAnnually = new System.Windows.Forms.TextBox();
             this.lblAnafAnnually = new System.Windows.Forms.Label();
@@ -85,6 +83,8 @@ namespace SRL_Calculator
             this.txtNetMonthEur = new System.Windows.Forms.TextBox();
             this.lblNetMonthEur = new System.Windows.Forms.Label();
             this.lblPercentageHead = new System.Windows.Forms.Label();
+            this.lblEurValue = new System.Windows.Forms.Label();
+            this.txtEurValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtGrossMonthly
@@ -97,7 +97,7 @@ namespace SRL_Calculator
             this.txtGrossMonthly.Text = "0";
             this.txtGrossMonthly.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGrossMonthly.TextChanged += new System.EventHandler(this.txtGrossMonthly_TextChanged);
-            this.txtGrossMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onlyAllowNumbers);
+            this.txtGrossMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
             // 
             // lblGrossMonthly
             // 
@@ -127,26 +127,7 @@ namespace SRL_Calculator
             this.txtAccountantMonthly.Text = "150";
             this.txtAccountantMonthly.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAccountantMonthly.TextChanged += new System.EventHandler(this.txtAccountantMonthly_TextChanged);
-            this.txtAccountantMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onlyAllowNumbers);
-            // 
-            // lblAccountantAnnually
-            // 
-            this.lblAccountantAnnually.AutoSize = true;
-            this.lblAccountantAnnually.Location = new System.Drawing.Point(268, 67);
-            this.lblAccountantAnnually.Name = "lblAccountantAnnually";
-            this.lblAccountantAnnually.Size = new System.Drawing.Size(91, 17);
-            this.lblAccountantAnnually.TabIndex = 7;
-            this.lblAccountantAnnually.Text = "Contabil / an:";
-            // 
-            // txtAccountantAnnually
-            // 
-            this.txtAccountantAnnually.Location = new System.Drawing.Point(375, 67);
-            this.txtAccountantAnnually.Name = "txtAccountantAnnually";
-            this.txtAccountantAnnually.ReadOnly = true;
-            this.txtAccountantAnnually.Size = new System.Drawing.Size(75, 22);
-            this.txtAccountantAnnually.TabIndex = 6;
-            this.txtAccountantAnnually.Text = "1800";
-            this.txtAccountantAnnually.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAccountantMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
             // 
             // lblGrossAnnually
             // 
@@ -166,12 +147,12 @@ namespace SRL_Calculator
             this.txtGrossAnnually.TabIndex = 4;
             this.txtGrossAnnually.Text = "0";
             this.txtGrossAnnually.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtGrossAnnually.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onlyAllowNumbers);
+            this.txtGrossAnnually.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
             // 
             // lblAnafAnnually
             // 
             this.lblAnafAnnually.AutoSize = true;
-            this.lblAnafAnnually.Location = new System.Drawing.Point(268, 95);
+            this.lblAnafAnnually.Location = new System.Drawing.Point(268, 67);
             this.lblAnafAnnually.Name = "lblAnafAnnually";
             this.lblAnafAnnually.Size = new System.Drawing.Size(76, 17);
             this.lblAnafAnnually.TabIndex = 11;
@@ -179,7 +160,7 @@ namespace SRL_Calculator
             // 
             // txtAnafAnnually
             // 
-            this.txtAnafAnnually.Location = new System.Drawing.Point(375, 95);
+            this.txtAnafAnnually.Location = new System.Drawing.Point(375, 67);
             this.txtAnafAnnually.MaxLength = 5;
             this.txtAnafAnnually.Name = "txtAnafAnnually";
             this.txtAnafAnnually.Size = new System.Drawing.Size(75, 22);
@@ -187,7 +168,7 @@ namespace SRL_Calculator
             this.txtAnafAnnually.Text = "2760";
             this.txtAnafAnnually.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAnafAnnually.TextChanged += new System.EventHandler(this.txtAnafAnnually_TextChanged);
-            this.txtAnafAnnually.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onlyAllowNumbers);
+            this.txtAnafAnnually.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
             // 
             // lblSeparator1
             // 
@@ -457,7 +438,7 @@ namespace SRL_Calculator
             this.txtSpendingsMonthly.Text = "0";
             this.txtSpendingsMonthly.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSpendingsMonthly.TextChanged += new System.EventHandler(this.txtSpendingsMonthly_TextChanged);
-            this.txtSpendingsMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.onlyAllowNumbers);
+            this.txtSpendingsMonthly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
             // 
             // lblSpendingsMonthly
             // 
@@ -605,11 +586,34 @@ namespace SRL_Calculator
             this.lblPercentageHead.TabIndex = 61;
             this.lblPercentageHead.Text = "Din brut:";
             // 
+            // lblEurValue
+            // 
+            this.lblEurValue.AutoSize = true;
+            this.lblEurValue.Location = new System.Drawing.Point(268, 95);
+            this.lblEurValue.Name = "lblEurValue";
+            this.lblEurValue.Size = new System.Drawing.Size(81, 17);
+            this.lblEurValue.TabIndex = 63;
+            this.lblEurValue.Text = "EUR Value:";
+            // 
+            // txtEurValue
+            // 
+            this.txtEurValue.Location = new System.Drawing.Point(375, 95);
+            this.txtEurValue.MaxLength = 5;
+            this.txtEurValue.Name = "txtEurValue";
+            this.txtEurValue.Size = new System.Drawing.Size(75, 22);
+            this.txtEurValue.TabIndex = 62;
+            this.txtEurValue.Text = "5";
+            this.txtEurValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEurValue.TextChanged += new System.EventHandler(this.txtEurValue_TextChanged);
+            this.txtEurValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
+            // 
             // frmRoSrlSalaryTaxCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 403);
+            this.Controls.Add(this.lblEurValue);
+            this.Controls.Add(this.txtEurValue);
             this.Controls.Add(this.lblPercentageHead);
             this.Controls.Add(this.txtNetYearEur);
             this.Controls.Add(this.lblNetYearEur);
@@ -658,8 +662,6 @@ namespace SRL_Calculator
             this.Controls.Add(this.lblSeparator1);
             this.Controls.Add(this.lblAnafAnnually);
             this.Controls.Add(this.txtAnafAnnually);
-            this.Controls.Add(this.lblAccountantAnnually);
-            this.Controls.Add(this.txtAccountantAnnually);
             this.Controls.Add(this.lblGrossAnnually);
             this.Controls.Add(this.txtGrossAnnually);
             this.Controls.Add(this.lblAccountantMonthly);
@@ -671,6 +673,7 @@ namespace SRL_Calculator
             this.MinimizeBox = false;
             this.Name = "frmRoSrlSalaryTaxCalculator";
             this.Text = "RO SRL Salary Tax Calculator";
+            this.Load += new System.EventHandler(this.frmRoSrlSalaryTaxCalculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -682,8 +685,6 @@ namespace SRL_Calculator
         private System.Windows.Forms.Label lblGrossMonthly;
         private System.Windows.Forms.Label lblAccountantMonthly;
         private System.Windows.Forms.TextBox txtAccountantMonthly;
-        private System.Windows.Forms.Label lblAccountantAnnually;
-        private System.Windows.Forms.TextBox txtAccountantAnnually;
         private System.Windows.Forms.Label lblGrossAnnually;
         private System.Windows.Forms.TextBox txtGrossAnnually;
         private System.Windows.Forms.Label lblAnafAnnually;
@@ -734,6 +735,8 @@ namespace SRL_Calculator
         private System.Windows.Forms.TextBox txtNetMonthEur;
         private System.Windows.Forms.Label lblNetMonthEur;
         private System.Windows.Forms.Label lblPercentageHead;
+        private System.Windows.Forms.Label lblEurValue;
+        private System.Windows.Forms.TextBox txtEurValue;
     }
 }
 
