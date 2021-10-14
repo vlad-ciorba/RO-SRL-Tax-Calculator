@@ -1,0 +1,11 @@
+# .NET
+packages
+bin
+obj
+*.cs.orig
+*.csproj.orig
+*.csproj.user
+*.DotSettings.user
+
+# Tools
+.vs
