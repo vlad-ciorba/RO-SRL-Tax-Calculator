@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RO SRL Salary Tax Calculator", "SRL Calculator\RO SRL Salary Tax Calculator.csproj", "{B193310E-CC2D-469A-B421-4A9C19E4B3F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RO SRL Salary Tax Calculator", "Tax Calculator\RO SRL Salary Tax Calculator.csproj", "{B193310E-CC2D-469A-B421-4A9C19E4B3F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
