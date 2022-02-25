@@ -10,13 +10,22 @@ namespace SRL_Calculator
             InitializeComponent();
         }
 
-        private float eurValue { get; set; }
+        private float accountantMonthlyPrice { get; set; } = 150;
+
+        private float anafAnuallyTax { get; set; } = 3060;
+
+        private float eurValue { get; set; } = 5;
+
+        private float monthlySpendings { get; set; } = 0;
 
         private int noVatMaxValue { get; } = 25000;
 
         private void frmRoSrlSalaryTaxCalculator_Load(object sender, EventArgs e)
         {
-            eurValue = float.Parse(txtEurValue.Text);
+            txtAnafAnnually.Text = anafAnuallyTax.ToString();
+            txtAccountantMonthly.Text = accountantMonthlyPrice.ToString();
+            txtSpendingsMonthly.Text = monthlySpendings.ToString();
+            txtEurValue.Text = eurValue.ToString();
         }
 
         private void OnlyAllowNumbers(object sender, KeyEventArgs e)
