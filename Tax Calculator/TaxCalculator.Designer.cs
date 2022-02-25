@@ -165,7 +165,7 @@ namespace SRL_Calculator
             this.txtAnafAnnually.Name = "txtAnafAnnually";
             this.txtAnafAnnually.Size = new System.Drawing.Size(75, 22);
             this.txtAnafAnnually.TabIndex = 10;
-            this.txtAnafAnnually.Text = "2760";
+            this.txtAnafAnnually.Text = "3060";
             this.txtAnafAnnually.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAnafAnnually.TextChanged += new System.EventHandler(this.txtAnafAnnually_TextChanged);
             this.txtAnafAnnually.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnlyAllowNumbers);
@@ -593,7 +593,7 @@ namespace SRL_Calculator
             this.lblEurValue.Name = "lblEurValue";
             this.lblEurValue.Size = new System.Drawing.Size(81, 17);
             this.lblEurValue.TabIndex = 63;
-            this.lblEurValue.Text = "EUR Value:";
+            this.lblEurValue.Text = "EUR / RON:";
             // 
             // txtEurValue
             // 

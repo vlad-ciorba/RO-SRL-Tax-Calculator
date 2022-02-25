@@ -10,7 +10,9 @@ namespace SRL_Calculator
             InitializeComponent();
         }
 
-        public float eurValue { get; set; }
+        private float eurValue { get; set; }
+
+        private int noVatMaxValue { get; } = 25000;
 
         private void frmRoSrlSalaryTaxCalculator_Load(object sender, EventArgs e)
         {
@@ -101,9 +103,9 @@ namespace SRL_Calculator
         {
             if (!string.IsNullOrEmpty(txtGrossMonthly.Text))
             {
-                if (float.Parse(txtGrossMonthly.Text) > 25000)
+                if (float.Parse(txtGrossMonthly.Text) > noVatMaxValue)
                 {
-                    MessageBox.Show("Max value is 25000", "VAT issue");
+                    MessageBox.Show($"Valoarea maxima este {noVatMaxValue}", "Eroare TVA");
                     ResetGrossAmounts();
                     return;
                 }
